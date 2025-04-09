@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign-Up</title>
+</head>
+<body>
+    <h1>User_Sign_Up</h1>
+    <form id="signupForm">
+        <input type="text" placeholder="Enter your Name" required><br><br>
+        <input type="email" placeholder="Enter your Email" required><br><br>
+        <input type="password" placeholder="Enter your Password" required><br><br>
+        <button type="submit">Signup</button>
+    </form>
+    <p>Already A User? <a href="login.html">login</a></p>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const name = document.querySelector("input[placeholder='Enter your Name']").value;
+            const email = document.querySelector("input[placeholder='Enter your Email']").value;
+            const password = document.querySelector("input[placeholder='Enter your Password']").value;
+
+            const user = { name, email, password };
+
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            // Check if email already exists
+            if (users.some(u => u.email === email)) {
+                alert("User already exists!");
+                return;
+            }
+
+            users.push(user);
+            localStorage.setItem("users", JSON.stringify(users));
+            alert("Signup successful! Please login.");
+            window.location.href = "login.html";
+        });
+    </script>
+</body>
+</html>

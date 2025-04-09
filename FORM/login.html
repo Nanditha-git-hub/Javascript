@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h1>User_Login</h1>
+    <form id="loginForm">
+        <input type="email" placeholder="Enter your Email" required><br><br>
+        <input type="password" placeholder="Enter your Password" required><br><br>
+        <button type="submit">Login</button>
+    </form>
+    <p>User doesn't exist? <a href="signup.html">Sign-up</a></p>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const email = document.querySelector("input[placeholder='Enter your Email']").value;
+            const password = document.querySelector("input[placeholder='Enter your Password']").value;
+
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+
+            const user = users.find(u => u.email === email && u.password === password);
+
+            if (user) {
+                alert("Login successful! Welcome, " + user.name);
+                // You can redirect to a home page here if you want
+            } else {
+                alert("Wrong email or password!");
+            }
+        });
+    </script>
+</body>
+</html>
