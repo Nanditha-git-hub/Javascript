@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Random Images</button> 
+        <div id="container"></div>
+    <script>
+        const images = ["https://cdn.dotpe.in/longtail/store-items/6542799/IRyeJgZe.jpeg","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEguIsikFdB4XcStxhNzjP02HQEHPKRfLXIf2g9f7T9vzyBxQRWrlzughY2zAYkU5JOTORAR9XxRfem-pBKTrtvcEjEu8-ZOIjZrjsIkgrRze_KPCQWqRAS7vXKMQBizVq1itG26OoFtJQR4/s1600/idly-idli4.jpg","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgcBkRkR6EnkXyylg65-EIANHtJgm6VSk6ojlQOsAEhDSc-kFQI9hf4HgKifv82EQZotQmd5Jfls3XRJJPCn0YyyNJ744h-yyyBbW19P5EixENHju48TXo0KkIEzgJj1CxZsaq62FXSHOw/s640/IMG_7227.jpg"]
+        const btn = document.querySelector("button")
+        const imgContainer = document.getElementById("container")
+        btn.addEventListener("click", () => {
+            imgContainer.innerHTML=""
+            const imageIndex = Math.floor(Math.random() * images.length)
+            let imageTag = document.createElement("img")
+            imageTag.setAttribute("src",images[imageIndex])
+            imgContainer.append(imageTag)
+        })
+    </script>
+</body>
+</html>

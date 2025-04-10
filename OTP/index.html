@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>YOUR OTP:</h2>
+    <p id="otpDisplay" style="font-size: 24px; font-weight: bold; "></p>
+
+    <script>
+        let otp = "";
+        for (let i = 0; i < 4; i++) {
+            const randomNum = Math.floor(Math.random() * 10);
+            otp += randomNum;
+        }
+        // console.log("otp", otp)
+
+        // Display the OTP in the paragraph with id="otpDisplay"
+        document.getElementById("otpDisplay").innerText = otp;
+    </script>
+
+</body>
+</html>

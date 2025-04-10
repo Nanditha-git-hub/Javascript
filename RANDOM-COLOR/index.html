@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id = "btn">Random-Color-Generator</button>
+    <script>
+
+        let button = document.getElementById("btn");
+        button.addEventListener("click",()=>{
+            randomColorGenarator()
+        })
+
+        function  randomColorGenarator(){
+            const hexaUsage = "abcdef0123456789"
+        let hexaColor = "#"
+        for(let i = 0; i < 6;i++){
+            const indexNumber = Math.floor(Math.random() * hexaUsage.length);
+            console.log(indexNumber)
+            hexaColor += hexaUsage[indexNumber]
+        }
+        console.log(hexaColor)
+        
+        document.body.style.backgroundColor = hexaColor;
+        }
+
+    </script>
+</body>
+</html>
