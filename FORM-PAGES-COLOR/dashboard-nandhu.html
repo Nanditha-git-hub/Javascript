@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .header {
+      background: #a7bee0;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 0 10px #ccc;
+    }
+
+   .sidebar {
+      width: 200px;
+      height: 100vh;
+      background-color:  #a7bee0;
+      color: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding-top: 60px;
+      box-shadow: 0 0 15px #ccc;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      padding: 12px;
+      text-decoration: none;
+    }
+
+    .sidebar button{
+        position:fixed;
+        left: 10px;
+        top: 12rem;
+        padding: 9px;
+        background-color: white;
+        border-radius: 3px;
+    } 
+
+    .sidebar button:hover {
+        background-color:  #a7bee0;
+    }
+
+    .sidebar a:hover {
+      background-color: #575757;
+    }
+
+   .main {
+      margin-left: 210px;
+      padding: 20px;
+    }
+
+    .card {
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    } 
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome to Your Dashboard</h1>
+      </div>
+    
+       <div class="sidebar">
+        <a href="#">Home</a>
+        <a href="#">Profile</a>
+        <a href="#">Settings</a>
+        <!-- <a href="#">Logout</a> -->
+        <button type="submit" onclick="dashboard()"> Logout</button>
+      </div>
+    
+      <div class="main">
+        <div class="card">
+          <h2>Overview</h2>
+          <p>This is a simple dashboard page.</p>
+        </div>
+
+        <div class="card">
+          <h2>Activity</h2>
+          <p>No recent activity.</p>
+        </div>
+    
+        <div class="card">
+          <h2>Messages</h2>
+          <p>You have 0 new messages.</p>
+        </div>
+      </div> 
+
+      <script>
+        function dashboard(){
+            let user = JSON.parse(localStorage.getItem("loggedin_user"))
+
+            if(user){
+                let confirmation = confirm("Are you sure to logout ?")
+                if(confirmation){
+                    localStorage.removeItem("loggedin_user")
+                    window.location.href="login-nandhu.html"
+                 }
+            }
+        }
+      </script>
+</body>
+</html>
