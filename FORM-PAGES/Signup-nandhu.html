@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNUP</title>
+</head>
+<body>
+    <center>
+        <form onsubmit="signup(event)">
+            <h1>SIGNUP-FORM</h1>
+            <input type="text" id="name" placeholder="Enter your name" required><br>
+            <input type="email" id="email" placeholder="Enter your email" required><br>
+            <input type="password" id="password" placeholder="Enter your password" required><br>
+            <button type="submit">Signup</button>
+        </form>
+    </center>
+
+    <script>
+        function signup(event){
+            event.preventDefault();
+
+            let signupname = document.getElementById("name").value.trim();
+            let signupemail = document.getElementById("email").value.trim();
+            let signuppassword = document.getElementById("password").value.trim();
+
+            // Get existing users or initialize as empty array, Reads previous users (if any).
+            let allUsers = JSON.parse(localStorage.getItem("Allusers_details")) || []; //allusers:A variable that holds all existing users from localStorage as an array. "Allusers_details"	The key used to store/fetch user data from localStorage.
+
+            // Check if user already exists
+            let existedUser = allUsers.find(user => user.email === signupemail); //find:Checks if email already exists.
+            if (existedUser) {
+                alert("User already exists with this email.");
+                return;
+            }
+
+            // New user object
+            let newUser = {
+                name: signupname,
+                email: signupemail,
+                password: signuppassword
+            };
+
+            // Add user to array and save back to localStorage
+            allUsers.push(newUser);
+            localStorage.setItem("Allusers_details", JSON.stringify(allUsers)); //Saves the new user for future lookups.
+
+            alert("Signup Successful!");
+            window.location.href = "login-nandhu.html";
+        }
+    </script>
+</body>
+</html>
